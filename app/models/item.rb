@@ -5,6 +5,8 @@ class Item < ActiveRecord::Base
   attr_accessible :name, :type_id, :value
 
   has_and_belongs_to_many :sites
+  has_many :drops
+  has_many :operations, through: :drops
 
   validates :name, uniqueness: true, presence: true
   validates :type_id, uniqueness: true, numericality: true

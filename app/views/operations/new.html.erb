@@ -4,11 +4,13 @@
     <li>
       <%= f.collection_select :site_id, Site.all, :id, :name, include_blank: true %>
     </li>
-    <% @items.each do |item| %>
-      <li data-sites="<%= Site.select{ |site| site.items.include? item }.collect(&:id) * ' ' %>">
-        <%= item.name %>
-        <%= number_field_tag :item_ids %>
+    <%= f.fields_for :drops do |d| %>
+      <li data-sites="<%= Site.select{ |site| site.items.include? d.object.item }.collect(&:id) * ' ' %>">
+        <%= d.label :quantity, d.object.item.name %>
+        <%= d.number_field :quantity %>
+        <%= d.hidden_field :item_id %>
       </li>
     <% end %>
   </ol>
+  <%= f.submit %>
 <% end %>
