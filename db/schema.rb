@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120526051250) do
+ActiveRecord::Schema.define(:version => 20120526055701) do
 
   create_table "items", :force => true do |t|
     t.integer  "type_id"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(:version => 20120526051250) do
     t.float    "value"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "sites", :force => true do |t|
+    t.string "name"
   end
 
 end

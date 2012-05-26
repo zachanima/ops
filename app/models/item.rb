@@ -31,6 +31,5 @@ class Item < ActiveRecord::Base
       item.save
       item.touch
     end
-
   end
 end
