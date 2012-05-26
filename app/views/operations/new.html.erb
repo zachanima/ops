@@ -1,16 +1,44 @@
-<h1>New operation</h1>
 <%= form_for @operation do |f| %>
-  <ol>
-    <li>
-      <%= f.collection_select :site_id, Site.all, :id, :name %>
-    </li>
-    <%= f.fields_for :drops do |d| %>
-      <li data-sites="<%= Site.select{ |site| site.items.include? d.object.item }.collect(&:id) * ' ' %>">
-        <%= d.label :quantity, d.object.item.name %>
-        <%= d.number_field :quantity %>
-        <%= d.hidden_field :item_id %>
+  <div id="pilots">
+    <table>
+      <thead>
+        <tr>
+          <th class="checkbox">P</th>
+          <th class="checkbox">O</th>
+          <th>Pilot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.fields_for :activities do |a| %>
+          <tr>
+            <td><%= a.check_box :prepared %></td>
+            <td><%= a.check_box :operated %></td>
+            <td><%= a.hidden_field :pilot_id %><%= a.object.pilot.name %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="2">Total</td>
+          <td></td>
+        <tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+  <div id="operations">
+    <h1>New operation</h1>
+    <ol>
+      <li>
+        <%= f.collection_select :site_id, Site.all, :id, :name %>
       </li>
-    <% end %>
-  </ol>
-  <%= f.submit %>
+      <%= f.fields_for :drops do |d| %>
+        <li data-sites="<%= Site.select{ |site| site.items.include? d.object.item }.collect(&:id) * ' ' %>">
+          <%= d.label :quantity, d.object.item.name %>
+          <%= d.number_field :quantity %>
+          <%= d.hidden_field :item_id %>
+        </li>
+      <% end %>
+    </ol>
+    <%= f.submit %>
+  </div>
 <% end %>

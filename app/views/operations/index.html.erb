@@ -1,8 +1,8 @@
 <div id="pilots">
-  <table id="pilots">
+  <table>
     <thead>
       <tr>
-        <th>H</th>
+        <th class="checkbox">H</th>
         <th>Pilot</th>
         <th>Profit</th>
       </tr>
@@ -31,11 +31,9 @@
   <%= link_to 'New operation', new_operation_path %>
   <% @operations.each do |operation| %>
     <div class="operation">
-      <h2>
-        <%= operation.site.name.split(': ')[0] %>
-        <span class="date"><%= operation.created_at.to_s(:short) %></span>
-      </h2>
-      <span class="subsite"><%= operation.site.name.split(': ')[1] %></span>
+      <h2><%= operation.site.name %></h2>
+      <span class="date"><%= operation.created_at.to_s(:short) %></span>
+      <span class="pilots"><%= operation.pilots.collect(&:name) * ', ' %></span>
       <span class="total"><%= operation.total %></span>
     </div>
   <% end %>

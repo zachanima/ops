@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  operation: 
+  pilot: 
+  prepared: false
+  operated: false
+
+two:
+  operation: 
+  pilot: 
+  prepared: false
+  operated: false

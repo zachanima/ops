@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120526081225) do
+ActiveRecord::Schema.define(:version => 20120526153006) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "operation_id"
+    t.integer  "pilot_id"
+    t.boolean  "prepared"
+    t.boolean  "operated"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "activities", ["operation_id"], :name => "index_activities_on_operation_id"
+  add_index "activities", ["pilot_id"], :name => "index_activities_on_pilot_id"
 
   create_table "drops", :force => true do |t|
     t.integer  "item_id"
