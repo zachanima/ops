@@ -8,11 +8,12 @@ body, th, td, input
 form
   label
     display: inline-block
-    text-align: right
-    width: 100px
+    min-width: 128px
     &.required:after
       color: #f00
       content: ' *'
+  input[type=checkbox]
+    margin-left: 128px
 
 
 

@@ -1,0 +1,34 @@
+<h1>New site</h1>
+<%= form_for @site do |f| %>
+  <ol>
+    <li>
+      <%= f.label :name, class: 'required' %>
+      <%= f.text_field :name %>
+    </li>
+    <li>
+      <%= hidden_field_tag "site[item_ids][]", nil %>
+      <% Item.all.each do |item| %>
+        <%= check_box_tag "site[item_ids][]", item.id, @site.item_ids.include?(item.id), id: dom_id(item) %>
+        <%= label_tag dom_id(item), item.name %><br>
+      <% end %>
+    </li>
+  </ol>
+  <%= f.submit %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Items</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sites.each do |site| %>
+      <tr>
+        <td><%= site.name %></td>
+        <td><%== site.items.collect(&:name) * '<br>'.html_safe %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
