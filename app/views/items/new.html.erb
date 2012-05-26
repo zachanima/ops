@@ -12,3 +12,22 @@
   </ol>
   <%= f.submit %>
 <% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type ID</th>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.type_id %></td>
+        <td><%= item.name %></td>
+        <td><%= item.value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
