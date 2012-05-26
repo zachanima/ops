@@ -1,5 +1,6 @@
 Ops::Application.routes.draw do
   resources :items
+  resources :operations
   resources :pilots
   resources :sites
 

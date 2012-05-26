@@ -1,0 +1,30 @@
+<table id="pilots">
+  <thead>
+    <tr>
+      <th>H</th>
+      <th>Pilot</th>
+      <th>Profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pilots.each do |pilot| %>
+      <tr>
+        <td><%= check_box_tag "haulers[]" %></td>
+        <td><%= pilot.name %></td>
+        <td></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="2">Total</td>
+      <td></td>
+    <tr>
+  </tbody>
+</table>
+<%= form_tag '' do %>
+  <%= submit_tag 'Mark all as paid' %>
+<% end %>
+
+<div id="operations">
+  <h1>Operations</h1>
+  <%= link_to 'New operation', new_operation_path %>
+</div>
