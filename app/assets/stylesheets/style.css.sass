@@ -1,3 +1,8 @@
+$margin: 16px
+$width: 512px
+
+
+
 body, th, td, input
   font:
     size: 12pt
@@ -21,3 +26,24 @@ table
   border-collapse: collapse
   th, td
     border: 1px solid #000
+
+
+
+div#pilots
+  border-right: 1px solid #000
+  position: absolute
+  top: $margin
+  width: $width
+  float: left
+  table
+    border-collapse: collapse
+    th, td
+      border-width: 0
+
+
+
+div#operations
+  margin-left: $width + $margin
+  & > a
+    float: right
+    margin-top: -32px

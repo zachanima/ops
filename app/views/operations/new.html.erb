@@ -2,7 +2,7 @@
 <%= form_for @operation do |f| %>
   <ol>
     <li>
-      <%= f.collection_select :site_id, Site.all, :id, :name, include_blank: true %>
+      <%= f.collection_select :site_id, Site.all, :id, :name %>
     </li>
     <%= f.fields_for :drops do |d| %>
       <li data-sites="<%= Site.select{ |site| site.items.include? d.object.item }.collect(&:id) * ' ' %>">
