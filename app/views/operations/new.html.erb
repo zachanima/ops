@@ -1,2 +1,14 @@
-<h1>Operations#new</h1>
-<p>Find me in app/views/operations/new.html.erb</p>
+<h1>New operation</h1>
+<%= form_for @operation do |f| %>
+  <ol>
+    <li>
+      <%= f.collection_select :site_id, Site.all, :id, :name, include_blank: true %>
+    </li>
+    <% @items.each do |item| %>
+      <li data-sites="<%= Site.select{ |site| site.items.include? item }.collect(&:id) * ' ' %>">
+        <%= item.name %>
+        <%= number_field_tag :item_ids %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>

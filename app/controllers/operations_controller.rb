@@ -5,5 +5,7 @@ class OperationsController < ApplicationController
   end
 
   def new
+    @operation = Operation.new
+    @items = Item.all
   end
 end
