@@ -8,18 +8,15 @@
           <th>Pilot</th>
         </tr>
       </thead>
+
       <tbody>
         <%= f.fields_for :activities do |a| %>
           <tr>
-            <td><%= a.check_box :prepared %></td>
-            <td><%= a.check_box :operated %></td>
+            <td class="checkbox"><%= a.check_box :prepared %></td>
+            <td class="checkbox"><%= a.check_box :operated %></td>
             <td><%= a.hidden_field :pilot_id %><%= a.object.pilot.name %></td>
           </tr>
         <% end %>
-        <tr>
-          <td colspan="2">Total</td>
-          <td></td>
-        <tr>
       </tbody>
     </table>
   </div>

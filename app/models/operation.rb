@@ -11,6 +11,8 @@ class Operation < ActiveRecord::Base
 
   accepts_nested_attributes_for :drops, :activities
 
+  default_scope order('id desc')
+
   def total
     total = 0
     self.drops.each do |drop|
