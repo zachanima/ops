@@ -1,5 +1,6 @@
 Ops::Application.routes.draw do
   resources :items
+  resources :pilots
   resources :sites
 
   # The priority is based upon order of creation:
