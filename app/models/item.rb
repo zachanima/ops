@@ -9,6 +9,7 @@ class Item < ActiveRecord::Base
   validates :name, uniqueness: true, presence: true
   validates :type_id, uniqueness: true, numericality: true
 
+  default_scope order :name
   scope :outdated, where('updated_at < ? or value is null', Time.now - 2.hours).limit(50)
 
   def self.update_values
