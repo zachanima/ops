@@ -20,4 +20,8 @@ class Operation < ActiveRecord::Base
     end
     total
   end
+
+  def image
+    "http://image.eveonline.com/Type/#{self.site.image_id}_32.png" if self.site.image_id
+  end
 end

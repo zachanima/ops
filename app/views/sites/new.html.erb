@@ -6,6 +6,10 @@
       <%= f.text_field :name %>
     </li>
     <li>
+      <%= f.label :image_id, class: 'required' %>
+      <%= f.number_field :image_id %>
+    </li>
+    <li>
       <%= hidden_field_tag "site[item_ids][]", nil %>
       <% Item.all.each do |item| %>
         <%= check_box_tag "site[item_ids][]", item.id, @site.item_ids.include?(item.id), id: dom_id(item) %>

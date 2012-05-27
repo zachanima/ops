@@ -2,7 +2,7 @@
   <table>
     <thead>
       <tr>
-        <th class="checkbox">H</th>
+        <th class="checkbox"><abbr title="Hauled">H</abbr></th>
         <th>Pilot</th>
         <th class="value">Profit</th>
       </tr>
@@ -28,10 +28,11 @@
   <h1>Operations</h1>
   <% @operations.each do |operation| %>
     <div class="operation">
+      <%= image_tag operation.image if operation.image %>
       <span class="pilots"><%= operation.pilots.collect(&:name) * ', ' %></span>
       <h2><%= operation.site.name %></h2>
       <span class="date"><%= operation.created_at.to_s(:short) %></span>
-      <span class="total"><%= operation.total %></span>
+      <span class="total"><%= operation.total.isk %></span>
     </div>
   <% end %>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120526153006) do
+ActiveRecord::Schema.define(:version => 20120527004859) do
 
   create_table "activities", :force => true do |t|
     t.integer  "operation_id"
@@ -62,7 +62,8 @@ ActiveRecord::Schema.define(:version => 20120526153006) do
   end
 
   create_table "sites", :force => true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "image_id"
   end
 
 end

@@ -35,6 +35,9 @@ span.total
     weight: bold
   float: right
 
+abbr
+  border-bottom: 1px dotted #999
+
 
 
 // Generic tables
@@ -67,7 +70,7 @@ table
 
 // Pilots list
 div#pilots
-  border-right: 1px solid #ccc
+  border-right: 1px solid #999
   position: absolute
   width: $left-width
   padding-right: $margin
@@ -83,13 +86,20 @@ div#pilots
 
 // Operations list
 div#operations
-  border-left: 1px solid #ccc
+  border-left: 1px solid #999
   margin-left: $left-width + $margin
   padding-left: $margin
 
+  img
+    float: left
+    margin-right: $padding
+    width: 32px
+    height: 32px
+
   a
     float: right
-    margin-top: $padding
+    display: inline-block
+    padding: $padding
 
   div.operation
     background-color: #111
