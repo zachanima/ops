@@ -8,7 +8,7 @@ class OperationsController < ApplicationController
   end
 
   def new
-    prev_activities = Operation.first.activities
+    prev_activities = Operation.first.activities if Operation.first
     @operation = Operation.new
     Item.all.each do |item|
       @operation.drops.new item_id: item.id
