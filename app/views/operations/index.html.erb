@@ -32,7 +32,7 @@
       <span class="pilots">
         <%== pilots_by_activity operation.activities %>
       </span>
-      <h2><%= operation.site.name %></h2>
+      <h2><%= link_to operation.site.name, edit_operation_path(operation) %></h2>
       <span class="date"><%= operation.created_at.to_s(:short) %></span>
       <span class="total"><%= operation.total.isk %></span>
     </div>

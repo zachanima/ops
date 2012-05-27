@@ -14,9 +14,9 @@ class Operation < ActiveRecord::Base
   default_scope order('id desc')
 
   def total
-    total = 0
+    total = 0.0
     self.drops.each do |drop|
-      total += drop.item.value * drop.quantity
+      total += drop.item.value * drop.quantity if drop.quantity
     end
     total
   end
