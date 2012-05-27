@@ -8,12 +8,20 @@ class OperationsController < ApplicationController
   end
 
   def new
+    prev_activities = Operation.first.activities
     @operation = Operation.new
     Item.all.each do |item|
       @operation.drops.new item_id: item.id
     end
     Pilot.all.each do |pilot|
-      @operation.activities.new pilot_id: pilot.id
+      prev_activity = prev_activities.where(pilot_id: pilot.id).first
+      if prev_activity
+        @operation.activities.new pilot_id: pilot.id,
+          prepared: prev_activity.prepared,
+          operated: prev_activity.operated
+      else
+        @operation.activities.new pilot_id: pilot.id
+      end
     end
   end
 
