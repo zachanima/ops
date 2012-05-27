@@ -14,7 +14,7 @@ class OperationsController < ApplicationController
       @operation.drops.new item_id: item.id
     end
     Pilot.all.each do |pilot|
-      prev_activity = prev_activities.where(pilot_id: pilot.id).first
+      prev_activity = prev_activities.where(pilot_id: pilot.id).first if prev_activities
       if prev_activity
         @operation.activities.new pilot_id: pilot.id,
           prepared: prev_activity.prepared,
