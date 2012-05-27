@@ -7,4 +7,8 @@ class Pilot < ActiveRecord::Base
   has_many :operations, through: :activities
 
   default_scope order :name
+
+  def first_name
+    self.name.split[0]
+  end
 end
