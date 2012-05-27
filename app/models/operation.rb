@@ -13,6 +13,24 @@ class Operation < ActiveRecord::Base
 
   default_scope order('id desc')
 
+  # Activity percentages.
+  Preparing = 0.1
+  Operating = 0.75
+  Hauling = 0.05
+  Tax = 0.1
+
+  def self.hauling
+    Operation.total * Hauling
+  end
+
+  def self.tax
+    Operation.total * Tax
+  end
+
+  def self.total
+    Operation.all.collect(&:total).inject(&:+) or 0.0
+  end
+
   def total
     total = 0.0
     self.drops.each do |drop|
