@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   def new
-    Item.update_values
     @item = Item.new
     @items = Item.all
   end

@@ -1,4 +1,6 @@
 class OperationsController < ApplicationController
+  before_filter :update_values, only: [:index, :new]
+
   def index
     @operations = Operation.all
     @pilots = Pilot.all
@@ -27,5 +29,10 @@ class OperationsController < ApplicationController
     else
       render :new
     end
+  end
+
+private
+  def update_values
+    Item.update_values
   end
 end
