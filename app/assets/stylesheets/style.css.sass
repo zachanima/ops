@@ -105,7 +105,18 @@ div#operations
     background-color: #111
     margin: $margin 0
     padding: $padding
+    &:last-of-type span.pilots
+      display: inline-block
+      margin-top: $padding / 2
     span.pilots
       float: right
+      span
+        font-weight: bold
+      span.operated
+        color: #fc6
+      span.prepared
+        color: #6cf
+      span.operated.prepared
+        color: #fff
     span.total
       margin-top: -2px
