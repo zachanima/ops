@@ -26,6 +26,7 @@
     <h1><%= @operation.new_record? ? 'New' : 'Edit' %> operation</h1>
     <ol>
       <li>
+        <%= f.label :site_id %>
         <%= f.collection_select :site_id, Site.all, :id, :name %>
       </li>
       <%= f.fields_for :drops do |d| %>

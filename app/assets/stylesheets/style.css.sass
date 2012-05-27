@@ -4,7 +4,7 @@ $padding: 4px
 
 
 
-*:focus
+input[type=checkbox]:focus
   outline: 1px dotted #fff
 
 body
@@ -68,6 +68,26 @@ table
 
 
 
+// Generic forms
+form
+  input, select
+    font-size: 9pt
+
+  ol
+    list-style: none
+    padding-left: 0
+
+  input[type=submit]
+    background-color: #111
+    border: 1px solid #fff
+    color: #fff
+    &:hover
+      background-color: #222
+    &:active
+      background-color: #333
+
+
+
 // Pilots list
 div#pilots
   border-right: 1px solid #999
@@ -76,7 +96,6 @@ div#pilots
   padding-right: $margin
 
   input[type=submit]
-    font-size: 9pt
     position: absolute
     right: $margin
     margin-top: $margin
@@ -85,7 +104,6 @@ div#pilots
     margin-bottom: $padding
     span
       float: right
-
 
 
 
@@ -125,3 +143,20 @@ div#operations
         color: #ccc
     span.total
       margin-top: -2px
+
+
+
+// Operation form
+form div#operations
+  label:first-child
+    display: inline-block
+    padding-right: $padding
+    text-align: right
+    width: 256px
+
+  input[type=text], input[type=number], select
+    background-color: #000
+    color: #fff
+
+  input[type=number]
+    border: 1px solid #999
