@@ -32,11 +32,25 @@ class Operation < ActiveRecord::Base
   end
 
   def total
-    total = 0.0
-    self.drops.each do |drop|
-      total += drop.item.value * drop.quantity if drop.quantity
+    unless @total
+      @total = 0.0
+      self.drops.each do |drop|
+        @total += drop.item.value * drop.quantity if drop.quantity
+      end
     end
-    total
+    @total
+  end
+
+  def preparing pilot
+    if self.activities.prepared.collect(&:pilot).include? pilot
+      self.total * Preparing / self.activities.prepared.count
+    end
+  end
+
+  def operating pilot
+    if self.activities.operated.collect(&:pilot).include? pilot
+      self.total * Operating / self.activities.operated.count
+    end
   end
 
   def image

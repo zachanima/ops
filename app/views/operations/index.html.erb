@@ -12,7 +12,7 @@
         <tr>
           <td class="checkbox"><%= check_box_tag :hauled %></td>
           <td><%= pilot.name %></td>
-          <td class="value">100,000,000.00 ISK</td>
+          <td class="value"><%= pilot.total.isk %></td>
         </tr>
       <% end %>
     </tbody>
