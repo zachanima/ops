@@ -9,6 +9,10 @@
       <%= f.label :name, class: 'required' %>
       <%= f.text_field :name %>
     </li>
+    <li>
+      <%= f.label :value %>
+      <%= f.number_field :value %>
+    </li>
   </ol>
   <%= f.submit %>
 <% end %>
