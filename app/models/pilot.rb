@@ -15,6 +15,6 @@ class Pilot < ActiveRecord::Base
   def total
     self.operations.collect do |operation|
       [operation.preparing(self), operation.operating(self)]
-    end.flatten.compact.inject(&:+) or 0.0
+    end.flatten.compact.inject(&:+) or 0.(0
   end
 end

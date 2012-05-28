@@ -8,3 +8,13 @@ jQuery ->
         $(@).find('input[type=number]').val('')
 
   $('select#operation_site_id').change()
+
+  $('td.hauled input[type=checkbox]').change ->
+    value = $(@).parents('td').siblings('td.value')
+    hauling = $('span[data-hauling]').data('hauling') / $('td.hauled :checked').length
+    $('td.value').each ->
+      if $(@).is(':checked')
+        $(@).html($(@).data('total') + hauling)
+      else
+        value.html value.data('total')
+    

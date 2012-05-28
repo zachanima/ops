@@ -10,16 +10,16 @@
     <tbody>
       <% @pilots.each do |pilot| %>
         <tr>
-          <td class="checkbox"><%= check_box_tag :hauled %></td>
+          <td class="checkbox hauled"><%= check_box_tag dom_id(pilot) %></td>
           <td><%= pilot.name %></td>
-          <td class="value"><%= pilot.total.isk %></td>
+          <td class="value" data-total="<%= pilot.total %>"><%= pilot.total.isk %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
   <div id="tax">
     Hauling (<%= Operation::Hauling.percent %>)
-    <span><%= Operation.hauling.isk %></span>
+    <span data-hauling="<%= Operation.hauling %>"><%= Operation.hauling.isk %></span>
   </div>
   <div id="tax">Tax (<%= Operation::Tax.percent %>)<span><%= Operation.tax.isk %></span></div>
   <h2>Total<span class="total"><%= Operation.total.isk %></span></h2>
