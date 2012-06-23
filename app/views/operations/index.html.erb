@@ -23,7 +23,7 @@
   </div>
   <div id="tax">Tax (<%= Operation::Tax.percent %>)<span><%= Operation.tax.isk %></span></div>
   <h2>Total<span class="total"><%= Operation.total.isk %></span></h2>
-  <%= form_tag '' do %>
+  <%= form_tag 'operations/pay' do %>
     <%= submit_tag 'Mark all as paid' %>
   <% end %>
 </div>

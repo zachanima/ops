@@ -1,7 +1,8 @@
 class OperationsController < ApplicationController
   before_filter :update_values, only: [:index, :new]
   before_filter :remove_empty_attributes, only: [:create, :update]
-  before_filter :authenticate!, except: [:index]
+  before_filter :authenticate!, except: [:index, :pay]
+  before_filter :authenticate_admin!, only: [:pay]
 
   def index
     @operations = Operation.all
@@ -60,6 +61,13 @@ class OperationsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def pay
+    Operation.all.each do |operation|
+      operation.destroy
+    end
+    redirect_to operations_path
   end
 
 private

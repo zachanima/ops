@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
       login == 'masq' && password == 'secret'
     end
   end
+
+  def authenticate_admin!
+    authenticate_or_request_with_http_basic do |login, password|
+      login == 'director' && password == 'secret'
+    end
+  end
 end
