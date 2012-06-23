@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527004859) do
+ActiveRecord::Schema.define(:version => 20120623153157) do
 
   create_table "activities", :force => true do |t|
     t.integer  "operation_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20120527004859) do
     t.float    "value"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "position"
   end
 
   create_table "items_sites", :id => false, :force => true do |t|
