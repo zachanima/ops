@@ -1,6 +1,7 @@
 class OperationsController < ApplicationController
   before_filter :update_values, only: [:index, :new]
   before_filter :remove_empty_attributes, only: [:create, :update]
+  before_filter :authenticate!, except: [:index]
 
   def index
     @operations = Operation.all

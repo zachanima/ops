@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_filter :authenticate!
   def new
     @item = Item.new
     @items = Item.all

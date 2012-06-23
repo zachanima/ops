@@ -1,4 +1,6 @@
 class SitesController < ApplicationController
+  before_filter :authenticate!
+
   def new
     @site = Site.new
     @sites = Site.all

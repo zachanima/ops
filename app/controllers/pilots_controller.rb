@@ -1,4 +1,6 @@
 class PilotsController < ApplicationController
+  before_filter :authenticate!
+
   def new
     @pilot = Pilot.new
     @pilots = Pilot.all
