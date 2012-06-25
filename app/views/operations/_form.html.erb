@@ -37,6 +37,7 @@
           <%= d.label :quantity, d.object.item.name %>
           <%= d.number_field :quantity %>
           <%= d.hidden_field :item_id %>
+          <span class="item-value"><%= d.object.item.value.isk %></span>
         </li>
       <% end %>
     </ol>
