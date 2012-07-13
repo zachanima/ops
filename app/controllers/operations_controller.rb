@@ -1,7 +1,8 @@
 class OperationsController < ApplicationController
   before_filter :update_values, only: [:index, :new]
   before_filter :remove_empty_attributes, only: [:create, :update]
-  before_filter :authenticate!, except: [:index, :pay]
+  before_filter :authenticate!, except: [:index, :pay, :edit]
+  before_filter :authenticate_commander!, except: [:index, :pay, :new]
   before_filter :authenticate_admin!, only: [:pay]
 
   def index
