@@ -38,7 +38,9 @@
         <%== pilots_by_activity operation.activities %>
       </span>
       <h2><%= link_to operation.site.name, edit_operation_path(operation) %></h2>
-      <span class="date"><%= operation.created_at.to_s(:short) %></span>
+      <span class="date">
+        <%= operation.created_at.to_s(:short) %>
+        <%= ", #{operation.tax_rate}% tax" if operation.tax_rate != Operation::Tax * 100 %></span>
       <span class="total"><%= operation.total.isk %></span>
     </div>
   <% end %>

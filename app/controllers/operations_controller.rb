@@ -11,7 +11,9 @@ class OperationsController < ApplicationController
 
   def new
     prev_activities = Operation.first.activities if Operation.first
+    prev_tax_rate = Operation.first.tax_rate if Operation.first
     @operation = Operation.new
+    @operation.tax_rate = prev_tax_rate.nil? ? Operation::Tax * 100 : prev_tax_rate
     Item.all.each do |item|
       @operation.drops.new item_id: item.id
     end

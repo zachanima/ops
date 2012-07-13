@@ -40,6 +40,11 @@
           <span class="item-value"><%= d.object.item.value.isk %></span>
         </li>
       <% end %>
+      <li>
+        <%= f.label :tax_rate, 'Tax rate in %' %>
+        <%= f.number_field :tax_rate %>
+        <span class="item-value">Default: <%= Operation::Tax.percent %></span>
+      </li>
     </ol>
     <%= f.submit %>
   </div>

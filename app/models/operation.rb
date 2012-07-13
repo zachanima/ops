@@ -1,5 +1,5 @@
 class Operation < ActiveRecord::Base
-  attr_accessible :site_id, :drops_attributes, :activities_attributes
+  attr_accessible :site_id, :drops_attributes, :activities_attributes, :tax_rate
 
   validates :site_id, presence: true
 
@@ -23,12 +23,12 @@ class Operation < ActiveRecord::Base
     Operation.total * Hauling
   end
 
-  def self.tax
-    Operation.total * Tax
-  end
-
   def self.total
     Operation.all.collect(&:total).inject(&:+) or 0.0
+  end
+
+  def self.tax
+    Operation.all.collect(&:taxed).inject(&:+) or 0.0
   end
 
   def total
@@ -41,15 +41,27 @@ class Operation < ActiveRecord::Base
     @total
   end
 
+  def taxed
+    self.total * self.tax_rate / 100.0
+  end
+
+
   def preparing pilot
+    if self.tax_rate == 100
+      return 0.0
+    end
     if self.activities.prepared.collect(&:pilot).include? pilot
       self.total * Preparing / self.activities.prepared.count
     end
   end
 
   def operating pilot
+    if self.tax_rate == 100
+      return 0.0
+    end
+    operating = 1.0 - Preparing - Hauling - self.tax_rate / 100.0
     if self.activities.operated.collect(&:pilot).include? pilot
-      self.total * Operating / self.activities.operated.count
+      self.total * operating / self.activities.operated.count
     end
   end
 
