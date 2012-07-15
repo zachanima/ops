@@ -40,3 +40,10 @@ jQuery ->
         $(@).html(isk($(@).data('total') + hauling))
       else
         $(@).html(isk($(@).data('total')))
+
+  # Hide advanced divider on operations list
+  $('div.advanced').hide()
+
+  # Show advanced divider on operations list click
+  $('div.operation').click ->
+    $(@).children('div.advanced').slideToggle()

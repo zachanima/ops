@@ -52,6 +52,8 @@ class Operation < ActiveRecord::Base
     end
     if self.activities.prepared.collect(&:pilot).include? pilot
       self.total * Preparing / self.activities.prepared.count
+    else
+      0.0
     end
   end
 
@@ -62,6 +64,8 @@ class Operation < ActiveRecord::Base
     operating = 1.0 - Preparing - Hauling - self.tax_rate / 100.0
     if self.activities.operated.collect(&:pilot).include? pilot
       self.total * operating / self.activities.operated.count
+    else
+      0.0
     end
   end
 
