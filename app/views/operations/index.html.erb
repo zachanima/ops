@@ -43,12 +43,12 @@
         <%= ", #{operation.tax_rate}% tax" if operation.tax_rate != Operation::Tax * 100 %></span>
       <span class="total"><%= operation.total.isk %></span>
       <div class="advanced">
-        <table>
+        <table class="operation_pilots">
           <% operation.activities.collect(&:pilot).each do |pilot| %>
-          <tr>
-            <td><%= pilot.name %></td>
-            <td><%= (operation.preparing(pilot) + operation.operating(pilot)).isk %></td>
-          </tr>
+            <tr>
+              <td><%= pilot.name %></td>
+              <td><%= (operation.preparing(pilot) + operation.operating(pilot)).isk %></td>
+            </tr>
           <% end %>
         </table>
       </div>
